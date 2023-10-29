@@ -4,5 +4,26 @@
         "test"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "fastapi_sample_app database",
+            "database": "postgres",
+            "username": "postgres"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5267,
+            "driver": "PostgreSQL",
+            "name": "fast_api_sample_app_test Database",
+            "database": "postgres_test",
+            "username": "postgres",
+            "password": "postgres"
+        }
+    ]
 }

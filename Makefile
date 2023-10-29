@@ -26,11 +26,7 @@ stoptestdb:
 	@docker compose rm testdb -f
 
 createvenv:
-	if [ ! -d "venv" ]; then \
-		@pip install virtualenv; \
-		@echo "Creating virtual environment"; \
-		@python -m virtualenv venv; \
-	fi
+	#echo "Creating virtual environment"
 
 activateenv: createvenv
 	@echo "Activating virtual environment"

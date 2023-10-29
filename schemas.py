@@ -1,8 +1,10 @@
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, NaiveDatetime
 from typing import List, Optional
 
 class EventBase(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    
     name: str
     description: Optional[str] = None
     location: Optional[str] = None
@@ -16,7 +18,6 @@ class EventCreate(EventBase):
     pass
 
 class Event(EventBase):    
-    model_config = ConfigDict(from_attributes=True)
     id: int
     # asset: models.Asset
 

@@ -1,21 +1,16 @@
 import os
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
 
 SQLALCHEMY_DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite:///./sql_app.db')
 
-async_engine = create_async_engine(
-    SQLALCHEMY_DATABASE_URL, 
-    connect_args={},
-    future=True,
-)
+async_engine = create_async_engine(SQLALCHEMY_DATABASE_URL)
 
-AsyncSessionLocal = sessionmaker(
-    async_engine, class_=AsyncSession, expire_on_commit=False
-)
+AsyncSessionLocal = async_sessionmaker(async_engine)
 
-Base = declarative_base()  
+class Base(DeclarativeBase):
+    pass
 
 async def get_db():
     async with AsyncSessionLocal() as db:

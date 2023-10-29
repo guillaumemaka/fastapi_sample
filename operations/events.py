@@ -12,7 +12,8 @@ async def get_events(db: AsyncSession, skip: int = 0, limit: int = 100):
     return results.scalars().all()
 
 async def create_event(db: AsyncSession, event: schemas.EventCreate) -> models.Event:
-    new_event = models.Event(**event.model_dump())
+    new_event = models.Event(**event.model_dump(mode="python"))
+
     try:
         await db.begin()
         db.add(new_event)
